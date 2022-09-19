@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TestTask.DataAccess.Abstractions\TestTask.DataAccess.Abstractions.csproj" />
+      <ProjectReference Include="..\TestTask.DataAccess.Domain\TestTask.DataAccess.Domain.csproj" />
+      <ProjectReference Include="..\TestTask.Service.Contact.Abstractions\TestTask.Service.Contact.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="11.0.1" />
+    </ItemGroup>
+
+</Project>

@@ -1,6 +1,12 @@
-﻿namespace TestTask.Web.Models.Response;
+﻿using AutoMapper;
+using TestTask.Service.Contact.Abstractions.Models;
 
-public class ContactProfile
+namespace TestTask.Web.Models.Response.Profiles;
+
+public class ContactProfile : Profile
 {
-    
+    public ContactProfile()
+    {
+        CreateMap<ContactDto, ContactVm>();
+    }
 }

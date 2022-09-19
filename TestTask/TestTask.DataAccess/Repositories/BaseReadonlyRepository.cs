@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using ModsenTask.DataAccess.Abstractions.Repostories;
+using TestTask.DataAccess.Abstractions.Repostories;
 
-namespace ModsenTask.DataAccess.Repositories;
+namespace TestTask.DataAccess.Repositories;
 
 internal class BaseReadonlyRepository<TEntity>
     : IBaseReadonlyRepository<TEntity>

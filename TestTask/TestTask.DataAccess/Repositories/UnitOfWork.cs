@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using ModsenTask.DataAccess.Abstractions.Repostories;
-using ModsenTask.DataAccess.Domain.Abstraction.Interfaces;
+using TestTask.DataAccess.Abstractions.Repostories;
+using TestTask.DataAccess.Domain.Abstractions.Interfaces;
 
-namespace ModsenTask.DataAccess.Repositories;
+namespace TestTask.DataAccess.Repositories;
 
 internal class UnitOfWork<TContext>
     : IUnitOfWork

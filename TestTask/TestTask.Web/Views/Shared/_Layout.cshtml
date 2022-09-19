@@ -1,16 +1,11 @@
-﻿@using ItechArt.Survey.WebApp.Constants
-
+﻿
 <!DOCTYPE html>
 
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>SurveyItechArt</title>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true">
-        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-        <link rel="stylesheet" href="~/css/Layout.css">
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
@@ -19,71 +14,13 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    <a class="display-5 font-weight-bold text-dark text-decoration-none" asp-area="" asp-controller="Home" asp-action="Home">SurveyItechArt</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="w-40">
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <div class="layout-links-to-pages flex-row-reverse">
-                            <div>
-                                <a class="nav-link btn text-dark fs-6" asp-controller="Account" asp-action="Registration">
-                                    <span class="fs-6">Registration</span>
-                                </a>
-                            </div>
-                            <div>
-                                <a class="nav-link btn text-dark fs-6" asp-controller="Account" asp-action="Login">
-                                    <span class="fs-6">Sing in</span>
-                                </a>
-                            </div>
-                        </div>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="layout-links-to-pages flex-row-reverse">
-                            <div>
-                                <form asp-controller="Account" asp-action="LogOut" method="post">
-                                    <input class="btn text-dark fs-6" type="submit" value="Log out">
-                                </form>
-                            </div>
-                            <div>
-                                <a class="nav-link text-dark hstack" asp-controller="Account" asp-action="Profile">
-                                    <img src="~/images/DefaultAvatar.png" class="mini-avatar" alt="">
-                                    <div>
-                                        <span class="fs-6 d-block">@User.Identity.Name</span>
-                                        @if (User.IsInRole(RolesConstants.AdministratorRoleName))
-                                        {
-                                            <span class="fs-7">@RolesConstants.AdministratorRoleName</span>
-                                        }
-                                    </div>
-                                </a>
-                            </div>
-                            <div>
-                                @if (User.IsInRole(RolesConstants.AdministratorRoleName))
-                                {
-                                    <a class="nav-link text-dark hstack" asp-controller="UserManagement" asp-action="UserManagement">
-                                        <span>
-                                            Users
-                                        </span>
-                                    </a>
-                                }
-                            </div>
-                        </div>
-                    }
-                </div>
-            </nav>
         </header>
         <div>
             @RenderBody()
         </div>
         <footer class="bg-light text-center text-lg-start footer fixed-bottom">
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-              &copy; 2022 - SurveyItechArt
+              &copy; 2022 - TestTask
             </div>
         </footer>
     </body>

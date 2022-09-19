@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace ModsenTask.DataAccess.Abstractions.Repostories;
+namespace TestTask.DataAccess.Abstractions.Repostories;
 
 public interface IBaseReadonlyRepository<TEntity>
     where TEntity : class

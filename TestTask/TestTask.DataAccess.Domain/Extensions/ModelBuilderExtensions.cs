@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 
-namespace ModsenTask.DataAccess.Domain.Extensions;
+namespace TestTask.DataAccess.Domain.Extensions;
 
 public static class ModelBuilderExtensions
 {

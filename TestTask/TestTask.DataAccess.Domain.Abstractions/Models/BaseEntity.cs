@@ -1,6 +1,6 @@
-﻿using ModsenTask.DataAccess.Domain.Abstraction.Interfaces;
+﻿using TestTask.DataAccess.Domain.Abstractions.Interfaces;
 
-namespace ModsenTask.DataAccess.Domain.Abstraction.Models;
+namespace TestTask.DataAccess.Domain.Abstractions.Models;
 
 public abstract class BaseEntity : IEntity
 {

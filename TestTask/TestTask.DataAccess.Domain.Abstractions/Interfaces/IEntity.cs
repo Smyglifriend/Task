@@ -1,4 +1,4 @@
-﻿namespace ModsenTask.DataAccess.Domain.Abstraction.Interfaces;
+﻿namespace TestTask.DataAccess.Domain.Abstractions.Interfaces;
 
 public interface IEntity
 {

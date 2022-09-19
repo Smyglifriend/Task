@@ -1,12 +1,16 @@
-﻿namespace TestTask.DataAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using TestTask.DataAccess.Domain.Extensions;
 
-public class ModsenTaskDbContext : DbContext
+namespace TestTask.DataAccess;
+
+public class TestTaskDbContext : DbContext
 {
-    public ModsenTaskDbContext()
+    public TestTaskDbContext()
     {
-        
+
     }
-    public ModsenTaskDbContext(DbContextOptions<ModsenTaskDbContext> options)
+
+    public TestTaskDbContext(DbContextOptions<TestTaskDbContext> options)
         :base(options)
     {
     }

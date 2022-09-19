@@ -1,6 +1,6 @@
-﻿using ModsenTask.DataAccess.Domain.Abstraction.Interfaces;
+﻿using TestTask.DataAccess.Domain.Abstractions.Interfaces;
 
-namespace ModsenTask.DataAccess.Abstractions.Repostories;
+namespace TestTask.DataAccess.Abstractions.Repostories;
 
 public interface IBaseReadWriteRepository<TEntity>
     : IBaseReadonlyRepository<TEntity>

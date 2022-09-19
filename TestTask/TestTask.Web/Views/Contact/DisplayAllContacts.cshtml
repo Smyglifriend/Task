@@ -1,8 +1,167 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IList<TestTask.Web.Models.Response.ContactVm>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Script
+{
+    <script src="~/js/Contact.js"></script>
+}
+<div>
+    <a asp-action="Create" asp-controller="ContactApi" onclick="showCreatePopup()">
+        <label style="cursor: pointer">
+            <button class="btn btn-outline-dark" type="submit">Create contact</button>
+        </label>
+    </a>
+    <div class="modal fade" id="MyModalCreate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Creating contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideCreatePopup()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-5">
+                                    <label for="InputContactName">Contact name: </label>
+                                    <input class="form-control mb-2 mt-2" id="InputContactName" 
+                                           placeholder="Enter title" onchange="validateContactName(this.value)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-5">
+                                    <label for="InputContactMobilePhone">Mobile phone: </label>
+                                    <input class="form-control mb-2 mt-2" id="InputContactMobilePhone"
+                                           placeholder="Enter mobile phone" onchange="validateContactPhoneNumber(this.value)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-5">
+                                    <label for="InputContactJobTitle">JobTitle: </label>
+                                    <input class="form-control mb-2 mt-2" id="InputContactJobTitle" placeholder="Enter Jobtitle">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-5">
+                                    <label for="InputContactBirthDate">BirthDate: </label>
+                                    <input class="form-control mb-2 mt-2" id="InputContactBirthDate" 
+                                           placeholder="Enter BirthDate" onchange="validateContactBirthDate(this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="saveContact()">Save contact</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-5">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr class="price-sorting type-regular">
+                    <th scope="col">
+                        <span>Title</span>
+                    </th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">MobilePhone</th>
+                    <th scope="col">DateOfBirth</th>
+                </tr>
+                </thead>
+                <tbody class="user-grid custom-scroll">
+                @foreach (var contact in Model)
+                {
+                    <tr id=@String.Concat("contact", contact.Id)>
+                        <td>@contact.Name</td>
+                        <td>@contact.JobTitle</td>
+                        <td>@contact.MobilePhone</td>
+                        <td>@contact.DateOfBirth</td>
+                        <td>
+                            <a onclick="showUpdatePopup(@contact.Id)">
+                                <label for=@String.Concat("update", contact.Id) style="cursor: pointer">
+                                    <button class="btn btn-outline-dark" type="submit" id="@contact.Id">Update contact</button>
+                                </label>
+                            </a>
+                            <a onclick="deleteContact(@contact.Id)">
+                                <label for=@String.Concat("delete", contact.Id) style="cursor: pointer">
+                                    <button class="btn btn-outline-dark" type="submit" id="@contact.Id">Delete contact</button>
+                                </label>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="MyModalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Creating contact</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideCreatePopup()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-5">
+                                        <input class="form-control mb-2 mt-2" id="InputUpdateContactId" placeholder="Enter title" type="hidden" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-5">
+                                        <label for="InputContactName">Contact name: </label>
+                                        <input class="form-control mb-2 mt-2" id="InputUpdateContactName"
+                                               placeholder="Enter title" onchange="validateContactName(this.value)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-5">
+                                        <label for="InputContactMobilePhone">Mobile phone: </label>
+                                        <input class="form-control mb-2 mt-2" id="InputUpdateContactMobilePhone"
+                                               placeholder="Enter mobile phone" onchange="validateContactPhoneNumber(this.value)">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-5">
+                                        <label for="InputContactJobTitle">JobTitle: </label>
+                                        <input class="form-control mb-2 mt-2" id="InputUpdateContactJobTitle" placeholder="Enter Jobtitle">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mb-5">
+                                        <label for="InputContactBirthDate">BirthDate: </label>
+                                        <input class="form-control mb-2 mt-2" id="InputUpdateContactBirthDate"
+                                               placeholder="Enter BirthDate" onchange="validateContactBirthDate(this.value)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="updateContact()">Save contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>

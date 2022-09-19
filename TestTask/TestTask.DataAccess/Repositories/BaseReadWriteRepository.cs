@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModsenTask.DataAccess.Abstractions.Repostories;
-using ModsenTask.DataAccess.Domain.Abstraction.Interfaces;
+using TestTask.DataAccess.Abstractions.Repostories;
+using TestTask.DataAccess.Domain.Abstractions.Interfaces;
 
-namespace ModsenTask.DataAccess.Repositories;
+namespace TestTask.DataAccess.Repositories;
 
 internal class BaseReadWriteRepository<TEntity>
     : BaseReadonlyRepository<TEntity>, 

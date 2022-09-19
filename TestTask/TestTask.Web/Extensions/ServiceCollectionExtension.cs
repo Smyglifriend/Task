@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace ModsenTask.Web.Extensions;
+namespace TestTask.Web.Extensions;
 
 public static class ServiceCollectionExtension
 {
